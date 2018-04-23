@@ -2,14 +2,14 @@
 
 ## Overview
 
-We'll cover propTypes and why they're a handy tool when working with components. 
+We'll cover propTypes and why they're a handy tool when working with components.
 
 ## Objectives
 1. Describe how to use `PropTypes` declarations
 2. Explain when to use `isRequired`
 3. Distinguish when to use `PropTypes.object` instead of `PropTypes.shape()`
 
-## What are PropTypes?
+## What are PropTypes
 PropTypes is a way for us to enforce that components receive the right props in the right form. Basically, it's kind of a developer-oriented validation: it catches errors when you pass the wrong stuff into a component, and warns you about it. These warnings only show up in development versions of React — this stuff isn't checked in production versions because of the overhead (and throwing the errors in production would be too little too late anyway). This helps with code modularity and reuse, as running the code in development will clearly indicate if a component is being used in a wrong way. This is especially helpful for working with multiple developers and big codebases.
 
 A more concrete example: let's say we have some kind of county fair hog profile card. The card uses several props: `hogName`, `farmer`, `foodLikes`, `weightClass`, and so on. It'd be great if we could validate our component to make sure the `hogName` prop is passed in — otherwise our hog profile card would look incomplete. Additionally, we all know a hog can't compete outside of a weight class: we can require `weightClass` to be a string with the value `'heavyWeight'`, `'welterWeight'` or `'lightWeight'`. We can achieve all of this stuff using PropTypes!
@@ -59,7 +59,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Order extends React.Component {
-  
+
   render() {
     // ...
   }
@@ -82,7 +82,7 @@ Order.propTypes = {
 ```
 
 We just told our component to expect the `cone` prop to be a boolean. There are a couple of important things to note here:
- 
+
 - Notice the capitalization: the property on the component class is always called `propTypes`, while the React prop types you assign to them are capitalized as `PropTypes`. This is easy to mess up, so if our propTypes don't validate, that's the first place we should look!
 - Some types are not called what you'd expect them to be: a boolean is `bool`, a function is `func`, and so on. Using the [reference on PropTypes](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) is probably a good idea if you're just starting out with this stuff.
 
